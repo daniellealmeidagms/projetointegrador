@@ -6,9 +6,21 @@ const CURSOR = AppDataSource.getRepository(Recesso)
 
 export class ServiceRecesso{
 
-  async create(){
-    // const recessos = await CURSOR.save(objeto)
-    // return recessos
+  async create(data_recesso,descricao_recesso): Promise<Recesso | Error>{
+
+    if(await CURSOR.findOne({where: {data_recesso}})){
+      return new Error("Recesso já Cadastrado")
+    }
+
+    const recesso = CURSOR.create({
+      data_recesso,
+      descricao_recesso
+    })
+
+    await CURSOR.save(recesso)
+
+    return recesso
+    
 
   }
   async readAll(){
@@ -17,10 +29,14 @@ export class ServiceRecesso{
     return recessos
     
   }
-  async readOne(){
+  async readOne(id_recesso){
 
-    // const recessos = await CURSOR.findOneBy({id_recesso})
-    // return recessos
+    const recesso = await CURSOR.findOne({where : ( id_recesso )})
+    if(!recesso){
+      return new Error("Recesso não encontrado")
+    }
+
+    return recesso
 
     
   }
@@ -29,10 +45,16 @@ export class ServiceRecesso{
 
     
   }
-  async delete(){
+  async delete(id_recesso){
 
-    // const recessos = await CURSOR.remove()
-    // return recessos
+    const recesso = await CURSOR.findOne({where : ( id_recesso )})
+    if(!recesso){
+      return new Error("Recesso não encontrado")
+    }
+    await CURSOR.delete(recesso.id_recesso)
+    return "Recesso excluiod com sucesso"
+
+    
     
   }
 }
