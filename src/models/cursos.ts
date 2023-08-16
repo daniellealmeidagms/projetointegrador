@@ -3,11 +3,11 @@ import { Entity, PrimaryColumn, Column } from "typeorm"
 export default class curso {
   @PrimaryColumn()
   id_curso:string
-  @Column()
+  @Column({nullable: false})
   descricao_curso:string
-  @Column()
+  @Column({nullable: false})
   carga_horaria_curso:number
-  @Column()
+  @Column({nullable: false})
   modalidade:string
   @Column()
   eixo:string
