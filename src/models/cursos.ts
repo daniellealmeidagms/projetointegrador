@@ -11,9 +11,6 @@ export default class curso {
   modalidade:string
   @Column({ nullable: false})
   eixo:string
-  @Column()
-  id_turma:string
-  @Column()
-  id_aula:string
+
 }
 
