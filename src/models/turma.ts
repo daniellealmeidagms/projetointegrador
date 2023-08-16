@@ -14,12 +14,15 @@ import { Entity, PrimaryColumn, Column } from 'typeorm';
 export default class Turma {
   @PrimaryColumn()
   id_turma: string
-  @Column()
+  @Column({ nullable: false })
   data_inicil: Date
   @Column()
   data_fim: Date
-  @Column()
+  @Column({ nullable: false })
   horas_aula_dia: Number 
   @Column()
   fk_curso: string
+  constructor() {
+    
+  }
 }
