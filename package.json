@@ -20,5 +20,8 @@
     "pg": "^8.11.2",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.17"
+  },
+  "directories": {
+    "doc": "docs"
   }
 }
