@@ -5,11 +5,11 @@ export default class curso {
   id_curso:string
   @Column()
   descricao_curso:string
-  @Column()
+  @Column({ nullable: false})
   carga_horaria_curso:number
-  @Column()
+  @Column({ nullable: false})
   modalidade:string
-  @Column()
+  @Column({ nullable: false})
   eixo:string
   @Column()
   id_turma:string
