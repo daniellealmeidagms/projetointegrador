@@ -13,5 +13,7 @@ status_aula: String
 fk_tuma: String
 @Column()
 fk_unidade: String
-
+constructor(){
+  
+}
 }
