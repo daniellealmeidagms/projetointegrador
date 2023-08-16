@@ -10,3 +10,4 @@ export const AppDataSource = new DataSource({
   synchronize: true,
   logging: true,
 })
+
