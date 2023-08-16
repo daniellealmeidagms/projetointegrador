@@ -1,11 +1,5 @@
 
-//CREATE TABLE "unidade" (
- // "id_unidade" varchar PRIMARY KEY,
-  //"descricao_unidade" varchar NOT NULL,
-  //"carga_horaria_unidade" integer NOT NULL,
-  //"ordem" int NOT NULL,
-  //"fk_curso" varchar
-//);
+
 import { Entity, PrimaryColumn, Column} from "typeorm"
 @Entity("unidade")
 export default class Unidade {
@@ -22,6 +16,6 @@ export default class Unidade {
   @Column()
   fk_curso:string 
   constructor(){
-    
+
   }
 }
