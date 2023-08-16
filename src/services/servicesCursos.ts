@@ -15,6 +15,12 @@ export class servicesCursos {
     }
     return curso
   }
-  async update() {}
-  async delete() {}
+  async delete(id_curso) {
+    const curso = await cursor.findOne({where: {id_curso} })
+    if (!curso) {
+      return new Error("Curso não existente!")
+    }
+    await cursor.delete(curso.id_curso)
+    return "Curso excluido com sucesse!"
+  }
 }
