@@ -8,7 +8,13 @@ export class servicesCursos {
     const cursos = await cursor.find()
     return cursos
   }
-  async readonly() {}
+  async readonly(id_curso) {
+    const curso = await cursor.findOne({where: {id_curso} })
+    if (!curso) {
+      return new Error("Curso não existente!")
+    }
+    return curso
+  }
   async update() {}
-  async this.delete() {}
+  async delete() {}
 }
