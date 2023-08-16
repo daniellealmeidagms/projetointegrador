@@ -8,4 +8,7 @@ export class servicesCursos {
     const cursos = await cursor.find()
     return cursos
   }
+  async readonly() {}
+  async update() {}
+  async this.delete() {}
 }
