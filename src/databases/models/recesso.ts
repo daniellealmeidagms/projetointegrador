@@ -6,9 +6,9 @@ export default class Recesso{
   @PrimaryColumn()
   id_recesso: string
 
-  @Column()
+  @Column({nullable: false})
   descricao_recesso : string
 
-  @Column()
+  @Column({nullable : false})
   data_recesso : Date
 }
