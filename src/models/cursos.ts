@@ -11,10 +11,6 @@ export default class curso {
   modalidade:string
   @Column()
   eixo:string
-  @Column()
-  id_turma:string
-  @Column()
-  id_aula:string
 }
 
 //By Pablo Henrique R. Alves
