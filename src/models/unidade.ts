@@ -1,4 +1,5 @@
 import { Entity, PrimaryColumn, Column} from "typeorm"
+import { v4 as uuid } from "uuid"
 @Entity("unidade")
 export default class Unidade {
   //primary key
@@ -12,6 +13,9 @@ export default class Unidade {
   ordem:number 
   @Column()
   fk_curso:string 
+  constructor () {
+    this.id_unidade = uuid()
+  }
 }
 
 //Pablo Pilgrim
