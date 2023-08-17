@@ -1,10 +1,10 @@
-import {Entity, PrimaryColumn, Column} from "typeorm"
+  import {Entity, PrimaryColumn, Column} from "typeorm"
 
-@Entity("aulas")
-export default class Aula {
+  @Entity("aulas")
+  export default class Aula {
   //chave primaria
   @PrimaryColumn()
-  id_aluno: string
+  id_aula: string
   //atributos
   @Column({nullable: false})
   data_aula: Date
@@ -17,6 +17,5 @@ export default class Aula {
   fk_unidade: string
 
   constructor(){
-    
   }
-}
+  }
