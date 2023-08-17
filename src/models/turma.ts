@@ -9,7 +9,7 @@ CREATE TABLE "turma" (
 */
 
 import { Entity, PrimaryColumn, Column } from 'typeorm';
-
+import { v4 as uuid } from "uuid"
 @Entity("turma")
 export default class Turma {
   @PrimaryColumn()
@@ -23,6 +23,6 @@ export default class Turma {
   @Column()
   fk_curso: string
   constructor() {
-    
+    this.id_turma = uuid()
   }
 }
