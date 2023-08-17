@@ -1,4 +1,5 @@
 import { Entity, PrimaryColumn, Column, IntegerType } from 'typeorm';
+import { v4 as uuid } from "uuid"
 
 @Entity("unidade")
 export default class Unidade {
@@ -13,6 +14,6 @@ export default class Unidade {
   @Column()
   fk_curso: string
   constructor(){
-    
+    this.id_unidade = uuid()
   }
 } 
