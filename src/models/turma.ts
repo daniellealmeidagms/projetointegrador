@@ -1,10 +1,10 @@
 import {Entity, PrimaryColumn, Column} from "typeorm"
 
-@Entity("turma")
+@Entity("Turma")
 export default class Turma {
 
 @PrimaryColumn()
-id_aluno: string
+id_turma: string
 @Column()
 data_inicio: Date
 @Column()
