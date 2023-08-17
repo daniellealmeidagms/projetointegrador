@@ -1,4 +1,5 @@
 import {Entity, PrimaryColumn, Column} from "typeorm"
+import { v4 as uuid } from "uuid"
 
 @Entity("Turma")
 export default class Turma {
@@ -14,6 +15,6 @@ horas_aula_dia: Number
 @Column()
 fk_curso: string
 constructor (){
-  
+  this.id_turma = uuid()
 }
 }
