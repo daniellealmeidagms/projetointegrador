@@ -1,4 +1,3 @@
-import { promises } from 'fs'
 import { AppDataSource  } from '../databases/datasource'
 import Curso from '../models/cursos'
 const cursor = AppDataSource.getRepository(Curso)
@@ -7,6 +6,13 @@ export class servicesCursos {
     if (await cursor.findOne({where: {descricao_curso} })) {
       return new Error("Curso já registrado!")
     }
+    const curso = cursor.create({
+      carga_horaria_curso,
+      modalidade,
+      eixo
+    })
+    await cursor.save(curso)
+    return curso
   }
   async ReadAll() {
     const cursos = await cursor.find()
