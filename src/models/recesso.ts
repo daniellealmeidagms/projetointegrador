@@ -1,19 +1,13 @@
-import { Entity,PrimaryColumn,Column,  } from 'typeorm'
-import {v4 as uuid} from "uuid"
-
+import { Entity, PrimaryColumn, Column } from "typeorm"
 @Entity("recesso")
-export default class Recesso{
-
+export default class Recesso {
+  //chave primária
   @PrimaryColumn()
   id_recesso: string
-
-  @Column({nullable: false})
-  descricao_recesso : string
-
-  @Column({nullable : false})
-  data_recesso : Date
-
-  constructor(){
-    this.id_recesso = uuid()
-  }
+  //atributos
+  @Column({ nullable: false })
+  descricao_recesso: string
+  @Column({ nullable: false })
+  data_recesso: Date
+  constructor() {}
 }
