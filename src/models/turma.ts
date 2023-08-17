@@ -15,7 +15,7 @@ export default class Turma {
   @PrimaryColumn()
   id_turma: string
   @Column({ nullable: false })
-  data_inicil: Date
+  data_inicio: Date
   @Column()
   data_fim: Date
   @Column({ nullable: false })
