@@ -1,4 +1,5 @@
 import { Entity, PrimaryColumn, Column } from "typeorm"
+import { v4 as uuid } from "uuid"
 @Entity("curso")
 export default class Curso {
   @PrimaryColumn()
@@ -11,6 +12,9 @@ export default class Curso {
   modalidade:string
   @Column()
   eixo:string
+  constructor() {
+    this.id_curso = uuid()
+  }
 }
 
 //By Pablo Henrique R. Alves
