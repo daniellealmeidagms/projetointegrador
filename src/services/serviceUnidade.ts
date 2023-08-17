@@ -1,26 +1,38 @@
-import{ AppDataSource } from "../databases/datasource"
+import { AppDataSource } from "../databases/datasource"
 import Unidade from "../models/unidade"
 
 const cursor = AppDataSource.getRepository(Unidade)
 
-export class ServiceUnidade {
-    async create() { }
-
-    async readAll() {
-        //find SELECT * FROM unidade
-        const unidade = await cursor.find()
-        return unidade
+export class ServiceRecesso {
+  async create(descricao_unidade,carga_horaria_unidade,ordem): Promise<Unidade| Error>{
+    if (await cursor.findOne({ where: {descricao_unidade,carga_horaria_unidade,ordem}})){
+      return new Error ("Unidade ja cadastrada")
     }
-async readOne(id_unidade) {
-    //SELECT * FROM unidade WHERE id_unidade = id_unidade
-    const unidade = await cursor.findOne ({ where: {id_unidade}})
-    if (!unidade) {
-        return new Error("Unidade não encontrado")
+    const unidade = cursor.create({
+      descricao_unidade,
+      carga_horaria_unidade,
+      ordem
+    })
+  }
+  async readAll(){
+    const unidades = await cursor.find()
+    return unidades
+  }
+  async readOne( id_unidade){
+    const unidade = await cursor.findOne({ where:{ id_unidade }})
+    if(!unidade){
+      return new Error("Unidade nao encontrada")
     }
     return unidade
-}
-async update() {}
-async delete() {}
+  }
+  async update(){}
+  async delete(id_unidade){
+    const unidade = await cursor.findOne({ where:{ id_unidade }})
+    if(!unidade){
+      return new Error("Unidade nao encontrada")
+  }
+  await cursor.delete(unidade.id_unidade)
+  return "Unidade excluida com sucesso"
 }
 
-
+}
