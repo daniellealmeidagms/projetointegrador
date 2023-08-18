@@ -1,0 +1,102 @@
+------- STACK TOOLS --------
+
+* Linguagem
+- JS (Javascript): Interpretada, Fraca e Dinâmica
+
+* Banco de Dados 
+- PostgreSQL: Relacional
+
+* App Backend 
+- NodeJS: JS Backend Framework
+- NPM: Gerenciador de pacotes (alternativa: YARN)
+- Express: Servidor HTTP
+- TypeORM: Mapeamento Objeto-Relacional
+- Typescript: Forçar tipagem forte e estática no JS
+
+
+------- CRIAR NOVO PROJETO --------
+
+1º) Comandos Configuração Inicial
+
+npm init 	        inicializa o projeto criando arquivo package.json
+npm install 	    instala dependências/bibliotecas lado do cliente
+		              - express: servidor http
+		              - pg: driver de conexão com BD PostgreSQL
+                  - typeorm: mapeamento objeto-relacional
+                  - reflect-metadata: dependência do typeorm
+
+npm install -D	  instala dependências/bibliotecas lado do servidor
+                  - nodemon: reiniciar o servidor automaticamente após alterações
+                  - typescript: forçar tipagem forte e estática no JS 
+                  - ts-node: dependência do typescript
+                  - @types/express: dependência do typescript
+                  - @types/node: dependência do typescript
+
+
+2º) Estrutura de Pastas do Projeto
+
+* Databases: Arquivos de conexão ao(s) banco(s) de dados
+- Connections: Conectores de SGBDs
+- Models: Mapeamento de Entidades
+
+* Services: Arquivos de consulta ao banco de dados (DQL)
+
+* Controllers: Arquivos que linkam resultados da consulta com as rotas HTTP
+
+* Routes: Rotas de acesso aos recursos da aplicação
+
+DB -> DATABASES -> SERVICES -> CONTROLLERS -> ROUTES -> FRONTEND
+DB -> BACKEND 				                               -> FRONTEND
+
+
+3º) Inicializar Servidor
+
+- Criar arquivo index.ts
+- Criar script "start" no arquivo package.json
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+18/08/2023 
+
+ReadAll 
+Criou uma constante de result = (aguardo) pelo service lá no banco de dados. Ela aguarda o retorno da função service. 
+
+
+Dentro do controller, este metodo por exemplo esta guardando o retorno do realALL de service dentro de uma constante. Esse retorno esta vindo
+de service. Logo apos há uma condicional If que diz que se o retorno do resultado for menor que 1, ou seja, 0 pois estamos buscando se tem 
+as aulas cadastradas,  ira exibir uma mensagem dizendo que não há aulas cadastradas, se for maior que um, ou seja, se houver aula cadastrada
+ira retornar o resultado com a quantidade de aulas
+
+
+---------------------------------------------------------------         
+|   async readAll(request: Request, response: Response){      |   
+|                                                             |  
+|    const result = await service.readAll()                   |   
+|    if(result.length < 1 ) {                                 |
+|      return response.json("Não há nenhuma aula cadastrada") |         
+|    }                                                        |   
+|    return response.json(result)                             |        
+|  }                                                          |
+|_____________________________________________________________|       
+
+
+ReadOne 
+
+aqui está sendo passado um parametro (id) que será como um result set com where id. Nisto, está sendo armazenado na constante result a classe 
+service que vem do service readOne. A condicional if diz que se o resultado for uma instancia de erro, ira retornar uma mensagem de erro 404
+se não será retornnara o resultado de busca, traçado em ID_aula. 
+
+---------------------------------------------------------------         
+|   async readOne(request: Request, response: Response){      |   
+|                                                             |  
+|    const {id_aula} = request.params                         |
+|      const result = await service.readOne({id_aula})        |   
+|    if(result instanceof Error) {                            |
+|      return response.status(404).json (result.message)      |         
+|    }                                                        |   
+|    return response.json(result)                             |        
+|  }                                                          |
+|_____________________________________________________________|                                                            
+
+

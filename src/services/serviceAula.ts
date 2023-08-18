@@ -8,12 +8,8 @@ import { AppDataSource } from "../databases/datasource";
 
   //funcoes crud
   export class ServiceAula {
-  async create(
-  data_aula,
-  status_aula,
-  fk_turma,
-  fk_unidade
-  ): Promise<Aula | Error> {
+  
+  async create(data_aula,status_aula, fk_turma, fk_unidade): Promise<Aula | Error> {
   //verifica se tem um registro igual no sistema
 
   if (
@@ -41,7 +37,7 @@ import { AppDataSource } from "../databases/datasource";
   return aula;
   }
 
-  async readOne(id_aula) {
+  async readOne(id_aula) : Promise<Aula|Error> {
   //select * from aluno where id_aula = id_aula
   const aula = await cursor.findOne({ where: { id_aula } });
   if (!aula) {
