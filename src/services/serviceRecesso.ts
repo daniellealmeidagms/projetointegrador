@@ -23,7 +23,7 @@ export class ServiceRecesso {
     return TODOS_RECESSOS
   }
 
-  async readOne(id_recesso) {
+  async readOne(id_recesso): Promise<Recesso | Error> {
     const RECESSO = await CURSOR.findOne({ where: { id_recesso } })
     if (!RECESSO) {
       return new Error("Recesso não encontrado!")
@@ -31,7 +31,7 @@ export class ServiceRecesso {
     return RECESSO
   }
 
-  async update(id_recesso, descricao_recesso, data_recesso) {
+  async update(id_recesso, descricao_recesso, data_recesso): Promise<Recesso | Error> {
     const RECESSO = await CURSOR.findOne({ where: { id_recesso } })
     if (!RECESSO) {
       return new Error("Recesso não encontrado!")
