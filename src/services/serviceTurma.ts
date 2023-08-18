@@ -4,7 +4,7 @@ import Turma from "../Models/turma"
 const cursor = AppDataSource.getRepository(Turma)
 
 export class ServiceTurma {
-  async create(data_inicio, data_fim, horas_aula_dia) {
+  async create(data_inicio, data_fim, horas_aula_dia): Promise<Turma | Error> {
     // Verifica se já existe algum registro igual no sistema
     if (await cursor.findOne({ where: { data_inicio } })) {
       return new Error("Turma já cadastrada!")
@@ -26,7 +26,7 @@ export class ServiceTurma {
     return turma
   }
 
-  async readOne(id_turma) {
+  async readOne(id_turma): Promise<Turma | Error> {
     // SELECT * FROM turma WHERE id_turma = id_turma
     const turma = await cursor.findOne({ where: { id_turma } })
     if (!turma) {
@@ -35,7 +35,7 @@ export class ServiceTurma {
     return turma
   }
 
-  async update(id_turma, data_inicio, data_fim, horas_aula_dia) {
+  async update(id_turma, data_inicio, data_fim, horas_aula_dia): Promise<Turma | Error> {
     const turma = await cursor.findOne({ where: { id_turma } })
 
     if (!turma) {
