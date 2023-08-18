@@ -1,7 +1,7 @@
 import { AppDataSource } from "../databases/datasource"
 import Curso from "../models/cursos"
 const cursor = AppDataSource.getRepository(Curso)
-export class servicesCursos {
+export class ServicesCursos {
   async create(descricao_curso, carga_horaria_curso, modalidade, eixo): Promise<Curso | Error> {
     if (await cursor.findOne({ where: { descricao_curso } })) {
       return new Error("Curso já registrado!")
@@ -14,22 +14,29 @@ export class servicesCursos {
     await cursor.save(curso)
     return curso
   }
-  async ReadAll() {
+  async readAll() {
     const cursos = await cursor.find()
     return cursos
   }
-  async readonly(id_curso) {
+  async readOne(id_curso) {
     const curso = await cursor.findOne({ where: { id_curso } })
     if (!curso) {
       return new Error("Curso não existente!")
     }
     return curso
   }
-  async update(id_curso, carga_horaria_curso, modalidade, eixo): Promise<Curso | Error> {
+  async update(
+    id_curso,
+    descricao_curso,
+    carga_horaria_curso,
+    modalidade,
+    eixo
+  ): Promise<Curso | Error> {
     const curso = await cursor.findOne({ where: { id_curso } })
     if (!curso) {
       return new Error("Curso não existente!")
     }
+    curso.descricao_curso = descricao_curso ? descricao_curso : curso.descricao_curso
     curso.carga_horaria_curso = carga_horaria_curso
       ? carga_horaria_curso
       : curso.carga_horaria_curso
