@@ -26,7 +26,7 @@ export class ServiceUnidades {
     const unidades = await cursor.find()
     return unidades
   }
-  async readOne(id_unidade) {
+  async readOne(id_unidade): Promise<Unidade | Error> {
     const unidade = await cursor.findOne({ where: { id_unidade } })
     if (!unidade) {
       return new Error("unidade não encontrada!")
@@ -37,7 +37,8 @@ export class ServiceUnidades {
     id_unidade,
     descricao_unidade,
     carga_horaria_unidade,
-    ordem
+    ordem,
+    fk_curso
   ): Promise<Unidade | Error> {
     const unidade = await cursor.findOne({ where: { id_unidade } })
     if (!unidade) {
@@ -48,6 +49,7 @@ export class ServiceUnidades {
       ? carga_horaria_unidade
       : unidade.carga_horaria_unidade
     unidade.ordem = ordem ? ordem : unidade.ordem
+    unidade.fk_curso = fk_curso ? fk_curso : unidade.fk_curso
     await cursor.save(unidade)
     return unidade
   }
