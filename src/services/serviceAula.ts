@@ -20,7 +20,7 @@ export class ServiceAula {
     return aula;
   }
 
-  async readAll(){
+  async readAll() {
     // find: select * FROM aluno ==> consulta da lista de todos os alunos
     const aulas = await cursor.find();
     return aulas;
