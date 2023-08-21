@@ -100,3 +100,26 @@ se não será retornnara o resultado de busca, traçado em ID_aula.
 |_____________________________________________________________|                                                            
 
 
+CRIANDO AS Rotas
+
+Criar uma pasta ROUTES dentro de SRC, posteriomente criar um arquivo routes.ts e em seguida importar o arquivo Router do express e criar uma
+arrow function. 
+
+import {Router} from "express"
+
+const rotas = Router
+rotas.get("/" (request, response) => {
+  return response.json("home page")
+})
+
+---------------------------------------------------------------         
+|   import {Router} from "express"                            |   
+|                                                             |  
+|    const rotas = Router                                     |
+|      rotas.get("/" (request, response) => {                 |   
+|     return response.json("home page")                       |
+|      })|                                                    |                                                      
+|_____________________________________________________________|  
+
+
+E depois preciso exportar dentro do index.ts
