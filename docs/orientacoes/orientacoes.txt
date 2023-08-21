@@ -46,7 +46,7 @@ npm install -D	  instala dependências/bibliotecas lado do servidor
 * Routes: Rotas de acesso aos recursos da aplicação
 
 DB -> DATABASES -> SERVICES -> CONTROLLERS -> ROUTES -> FRONTEND
-DB -> BACKEND 				                               -> FRONTEND
+DB ->                 BACKEND 			<3	               -> FRONTEND
 
 
 3º) Inicializar Servidor

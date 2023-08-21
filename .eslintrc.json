@@ -5,8 +5,8 @@
         "node": true
     },
     "extends": [
-        "standard-with-typescript",
-        "prettier"
+      "standard-with-typescript",
+      "prettier"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
