@@ -5,8 +5,8 @@ const service = new Serviceaula()
 
 export class ControlerAula {
   async create(request: Request, response: Response) {
-    const { data_aula, status_aula, fk_tuma, fk_unidade } = request.body
-    const result = await service.create(data_aula, status_aula, fk_tuma, fk_unidade)
+    const { data_aula, status_aula, fk_turma, fk_unidade } = request.body
+    const result = await service.create(data_aula, status_aula, fk_turma, fk_unidade)
     if (result instanceof Error) {
       return response.status(409).json(result.message)
     }
@@ -29,8 +29,8 @@ export class ControlerAula {
   }
   async update(request: Request, response: Response) {
     const { id_aula } = request.params
-    const { data_aula, status_aula, fk_tuma, fk_unidade } = request.body
-    const result = await service.update(id_aula, data_aula, status_aula, fk_tuma, fk_unidade)
+    const { data_aula, status_aula, fk_turma, fk_unidade } = request.body
+    const result = await service.update(id_aula, data_aula, status_aula, fk_turma, fk_unidade)
     if (result instanceof Error) {
       return response.status(404).json(result.message)
     }
