@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm"
-import Aula from '../models/aula'
+import aula from '../models/aula'
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -9,6 +9,6 @@ export const AppDataSource = new DataSource({
   password: "postgres",
   database: "cronogramas",
   synchronize: true,
-  logging: true, entities: [Aula]
+  logging: true, entities: [aula]
   
 })
