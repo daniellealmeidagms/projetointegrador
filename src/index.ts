@@ -2,6 +2,7 @@ import { AppDataSource } from "./databases/datasource"
 import rotas from './routes/routes'
 AppDataSource.initialize().then()
 console.log("Database conected!")
+
 const express = require("express")
 const app = express()
 app.use(express.json())

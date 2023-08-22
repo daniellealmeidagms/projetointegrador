@@ -6,8 +6,8 @@ rotas.get("/", (request, response) => {
   return response.json("hone page")
 })
 rotas.get("/cursos", new ControllerCurso().readAll)
-rotas.get("/cursos", new ControllerCurso().create)
-rotas.get("/cursos", new ControllerCurso().readOne)
-rotas.get("/cursos", new ControllerCurso().update)
-rotas.get("/cursos", new ControllerCurso().delete)
+rotas.post("/cursos", new ControllerCurso().create)
+rotas.get("/cursos/:id_curso", new ControllerCurso().readOne)
+rotas.put("/cursos/:id_curso", new ControllerCurso().update)
+rotas.delete("/cursos/:id_curso", new ControllerCurso().delete)
 export default rotas
