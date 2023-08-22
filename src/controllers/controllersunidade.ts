@@ -38,7 +38,7 @@ export class ControllerUnidade {
   }
   async delete(request: Request, response: Response) {
     const { id_unidade } = request.params
-    const result = await service.delete({ id_unidade })
+    const result = await service.delete(id_unidade)
     if (result instanceof Error) {
       return response.status(404).json(result.message)
     }
