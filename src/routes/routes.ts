@@ -1,6 +1,7 @@
 import { Router } from "express"
-import { ControllerTurma } from '../controllers/controllerTurma'
-import { ControllerRecesso } from '../controllers/controllerRecesso'
+import { ControllerTurma } from "../controllers/controllerTurma"
+import { ControllerRecesso } from "../controllers/controllerRecesso"
+import { ControllerUnidade } from "../controllers/controllersUnidade"
 
 const rotas = Router()
 
@@ -9,11 +10,11 @@ rotas.get("/", (request, response) => {
 })
 
 //Turma
-rotas.get("/turma", new ControllerTurma().readAll)
-rotas.post("/turma", new ControllerTurma().create)
-rotas.get("/turma/:id_turma", new ControllerTurma().readOne)
-rotas.put("/turma/:id_turma", new ControllerTurma().update)
-rotas.delete("/turma/:id_turma", new ControllerTurma().delete)
+rotas.get("/turmas", new ControllerTurma().readAll)
+rotas.post("/turmas", new ControllerTurma().create)
+rotas.get("/turmas/:id_turma", new ControllerTurma().readOne)
+rotas.put("/turmas/:id_turma", new ControllerTurma().update)
+rotas.delete("/turmas/:id_turma", new ControllerTurma().delete)
 
 //Recesso
 rotas.get("/recessos", new ControllerRecesso().readAll)
@@ -25,8 +26,8 @@ rotas.delete("/recessos/:id_recesso", new ControllerRecesso().delete)
 // Unidade
 rotas.get("/unidades", new ControllerUnidade().readAll)
 rotas.post("/unidades", new ControllerUnidade().create)
-rotas.get("/unidade/:id_unidades", new ControllerUnidade().readOne)
-rotas.put("/unidade/:id_unidades", new ControllerUnidade().update)
-rotas.delete("/unidade/:id_unidades", new ControllerUnidade().delete)
+rotas.get("/unidades/:id_unidades", new ControllerUnidade().readOne)
+rotas.put("/unidades/:id_unidades", new ControllerUnidade().update)
+rotas.delete("/unidades/:id_unidades", new ControllerUnidade().delete)
 
 export default rotas
