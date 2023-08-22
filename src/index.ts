@@ -1,4 +1,4 @@
-import { Controleraula } from './controllers/controlleraula'
+import { ControlerAula } from './controllers/controllerAula'
 import { AppDataSource } from "./databases/datasource"
 AppDataSource.initialize().then()
 import rotas from "./routes/routes"
@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(rotas)
 app.listen(3333, () => console.log("O server esta ONDELINE  na porta 3333. "))
 //aula
-rotas.get("/aula", new Controleraula().readAll)
-rotas.post("/aula", new Controleraula().create)
-rotas.get("/aula/:id_aulas",new Controleraula().update)
-rotas.delete("/aula/:id_aula",new Controleraula().delete)
+rotas.get("/aula", new ControlerAula().readAll)
+rotas.post("/aula", new ControlerAula().create)
+rotas.get("/aula/:id_aulas", new ControlerAula().update)
+rotas.delete("/aula/:id_aula", new ControlerAula().delete)
