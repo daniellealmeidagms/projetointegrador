@@ -1,7 +1,7 @@
 import { Entity, PrimaryColumn, Column } from "typeorm"
 import { v4 as  uuid } from "uuid"
 @Entity("aula")
-export default class Aula {
+export default class aula {
   @PrimaryColumn()
   id_aulas: string
   @Column({ nullable: false })
