@@ -1,5 +1,5 @@
-import { DataSource } from 'typeorm'
-import recesso from '../models/recesso'
+import { DataSource } from "typeorm"
+import Recesso from '../models/recesso'
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -10,6 +10,5 @@ export const AppDataSource = new DataSource({
   database: "cronogramas",
   synchronize: true,
   logging: true,
-  entities: [recesso]
-
+  entities: [Recesso]
 })
