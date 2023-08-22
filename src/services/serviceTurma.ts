@@ -1,4 +1,3 @@
-import { promises } from "dns"
 import { AppDataSource } from "../databases/datasource"
 import Turma from "../models/turma"
 

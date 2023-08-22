@@ -8,7 +8,7 @@ rotas.get("/", (request, response) => {
 })
 
 //Turma
-rotas.post("/turma", new ControllerTurma().readAll)
+rotas.get("/turma", new ControllerTurma().readAll)
 rotas.post("/turma", new ControllerTurma().create)
 rotas.get("/turma/:id_turma", new ControllerTurma().readOne)
 rotas.put("/turma/:id_turma", new ControllerTurma().update)
