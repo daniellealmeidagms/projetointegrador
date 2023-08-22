@@ -36,7 +36,7 @@ export class ControllerCurso {
   }
   async delete(request: Request, response: Response) {
     const { id_curso } = request.params
-    const result = await service.delete({ id_curso })
+    const result = await service.delete( id_curso )
     if (result instanceof Error) {
       return response.status(404).json(result.message)
     }

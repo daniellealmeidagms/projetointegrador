@@ -7,6 +7,7 @@ export class ServicesCursos {
       return new Error("Curso já registrado!")
     }
     const curso = cursor.create({
+      descricao_curso,
       carga_horaria_curso,
       modalidade,
       eixo,
