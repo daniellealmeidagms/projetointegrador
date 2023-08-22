@@ -8,7 +8,7 @@ CREATE TABLE "turma" (
 );
 */
 
-import { Entity, PrimaryColumn, Column } from 'typeorm';
+import { Entity, PrimaryColumn, Column } from "typeorm"
 import { v4 as uuid } from "uuid"
 @Entity("turma")
 export default class Turma {
@@ -19,7 +19,7 @@ export default class Turma {
   @Column()
   data_fim: Date
   @Column({ nullable: false })
-  horas_aula_dia: Number 
+  horas_aula_dia: Number
   @Column()
   fk_curso: string
   constructor() {
