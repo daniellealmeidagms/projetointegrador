@@ -13,6 +13,7 @@ export class ServiceTurma {
       data_inicio,
       data_fim,
       horas_aula_dia,
+      fk_curso
     })
     await cursor.save(turma)
     return turma
