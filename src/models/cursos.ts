@@ -1,6 +1,6 @@
 import { Entity, PrimaryColumn, Column } from "typeorm"
 @Entity("curso")
-export default class curso {
+export default class Curso {
   @PrimaryColumn()
   id_curso:string
   @Column()
