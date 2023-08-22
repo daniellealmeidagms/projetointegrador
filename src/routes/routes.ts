@@ -4,7 +4,7 @@ import { ControllerRecesso } from "../controllers/controllerRecesso"
 const ROTAS = Router()
 
 ROTAS.get("/", (request, response) => {
-  return response.json("quem leu é viado")
+  return response.json("homepage")
 })
 
 ROTAS.get("/recessos", new ControllerRecesso().readAll)

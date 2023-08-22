@@ -5,8 +5,8 @@ const service = new ServiceRecesso()
 
 export class ControllerRecesso {
   async create(request: Request, response: Response) {
-    const { descricao_recesso, data_recesso } = request.body
-    const result = await service.create(descricao_recesso, data_recesso)
+    const { data_recesso, descricao_recesso } = request.body
+    const result = await service.create(data_recesso, descricao_recesso)
     if (result instanceof Error) {
       return response.status(409).json(result.message)
     }
@@ -42,7 +42,7 @@ export class ControllerRecesso {
 
   async delete(request: Request, response: Response) {
     const { id_recesso } = request.params
-    const result = await service.delete({ id_recesso })
+    const result = await service.delete(id_recesso)
     if (result instanceof Error) {
       return response.status(404).json(result.message)
     }
