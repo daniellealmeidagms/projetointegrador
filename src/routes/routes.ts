@@ -22,4 +22,11 @@ rotas.get("/recessos/:id_recesso", new ControllerRecesso().readOne)
 rotas.put("/recessos/:id_recesso", new ControllerRecesso().update)
 rotas.delete("/recessos/:id_recesso", new ControllerRecesso().delete)
 
+// Unidade
+rotas.get("/unidades", new ControllerUnidade().readAll)
+rotas.post("/unidades", new ControllerUnidade().create)
+rotas.get("/unidade/:id_unidades", new ControllerUnidade().readOne)
+rotas.put("/unidade/:id_unidades", new ControllerUnidade().update)
+rotas.delete("/unidade/:id_unidades", new ControllerUnidade().delete)
+
 export default rotas
