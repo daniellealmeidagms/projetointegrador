@@ -10,7 +10,7 @@ export default class Aula {
   @Column({ nullable: false })
   status_aula: string
   @Column()
-  fk_tuma: string
+  fk_turma: string
   @Column()
   fk_unidade: string
   constructor() {
