@@ -42,7 +42,7 @@ async update(request: Request, response: Response) {
 
 async delete(request: Request, response: Response) {
   const { id_turma} = request.params
-  const result = await service.delete({ id_turma })
+  const result = await service.delete( id_turma )
   if(result instanceof Error) {
     return response.status(400).json(result.message)
   }
