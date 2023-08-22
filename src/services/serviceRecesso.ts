@@ -9,7 +9,7 @@ export class ServiceRecesso {
     return recessos
   }
 
-  async redOne(id_recesso): Promise<Recesso | Error> {
+  async readOne(id_recesso): Promise<Recesso | Error> {
     const recesso = await cursor.findOne({ where: { id_recesso } })
     if (!recesso) {
       return new Error("Recesso não encontrado")
