@@ -12,6 +12,7 @@ export class servicesCursos {
       return new Error("Curso já registrado!")
     }
     const curso = cursor.create({
+      descricao_curso,
       carga_horaria_curso,
       modalidade,
       eixo,
@@ -47,11 +48,12 @@ export class servicesCursos {
     return curso
   }
   async delete(id_curso) {
+    console.log(id_curso)
     const curso = await cursor.findOne({ where: { id_curso } })
     if (!curso) {
       return new Error("Curso não existente!")
     }
     await cursor.delete(curso.id_curso)
-    return "Curso excluido com sucesse!"
+    return "Curso excluido com sucesso!"
   }
 }
