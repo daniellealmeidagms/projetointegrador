@@ -7,7 +7,7 @@ export class ControllerRecesso {
   async create(request: Request, response: Response){
 
     const {descricao_recesso,data_recesso} = request.body
-    const result = await service.create(descricao_recesso,data_recesso)
+    const result = await service.create(data_recesso, descricao_recesso)
       if(result instanceof Error){
         return response.status(409).json(result.message)
       }
