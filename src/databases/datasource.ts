@@ -1,5 +1,7 @@
 import { DataSource } from "typeorm"
-import curso from '../models/cursos'
+import Unidade from '../models/unidade'
+import Recesso from '../models/recesso'
+import Turma from '../models/turma'
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -9,5 +11,6 @@ export const AppDataSource = new DataSource({
   password: "postgres",
   database: "cronogramas",
   synchronize: true,
-  logging: true, entities: [curso]
+  logging: true,
+  entities: [Recesso, Turma, Unidade]
 })
