@@ -30,7 +30,13 @@ export class ControllerUnidade {
   async update(request: Request, response: Response) {
     const { id_unidade } = request.params
     const { descricao_unidade, carga_horaria_unidade, ordem, fk_curso } = request.body
-    const result = await service.update(id_unidade, descricao_unidade, carga_horaria_unidade, ordem, fk_curso)
+    const result = await service.update(
+      id_unidade,
+      descricao_unidade,
+      carga_horaria_unidade,
+      ordem,
+      fk_curso
+    )
     if (result instanceof Error) {
       return response.status(404).json(result.message)
     }
@@ -43,5 +49,22 @@ export class ControllerUnidade {
       return response.status(404).json(result.message)
     }
     return response.status(300).json(result)
+  }
+
+  async filterTime(request: Request, response: Response) {
+    const { carga_horaria_unidade } = request.params
+    const result = await service.filterTime(carga_horaria_unidade)
+    if (result.length < 1) {
+      return response.status(204).json("Nenhuma carga horária encontrada!")
+    }
+    return response.status(200).json(result)
+  }
+  async filterCurso(request: Request, response: Response) {
+    const { fk_curso } = request.params
+    const result = await service.filterCurso(fk_curso)
+    if (result instanceof Error) {
+      return response.status(300).json(result.message)
+    }
+    return response.status(200).json(result)
   }
 }

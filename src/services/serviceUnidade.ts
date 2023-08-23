@@ -4,7 +4,12 @@ import Unidade from "../models/unidade"
 const cursor = AppDataSource.getRepository(Unidade)
 
 export class ServiceUnidade {
-  async create(descricao_unidade, carga_horaria_unidade, ordem, fk_curso): Promise<Unidade | Error> {
+  async create(
+    descricao_unidade,
+    carga_horaria_unidade,
+    ordem,
+    fk_curso
+  ): Promise<Unidade | Error> {
     if (await cursor.findOne({ where: { descricao_unidade } })) {
       return new Error("Unidade ja cadastrada")
     }
@@ -12,7 +17,7 @@ export class ServiceUnidade {
       descricao_unidade,
       carga_horaria_unidade,
       ordem,
-      fk_curso
+      fk_curso,
     })
     await cursor.save(unidade)
     return unidade
@@ -55,5 +60,16 @@ export class ServiceUnidade {
     }
     await cursor.delete(unidade.id_unidade)
     return "Unidade excluida com sucesso"
+  }
+  async filterTime(carga_horaria_unidade) {
+    const unidades = await cursor.find({ where: { carga_horaria_unidade } })
+    return unidades
+  }
+  async filterCurso(fk_curso) {
+    const curso = await cursor.findOne({ where: { fk_curso } })
+    if (!fk_curso) {
+      return new Error(" curso nao encontrado ")
+    }
+    return curso
   }
 }
