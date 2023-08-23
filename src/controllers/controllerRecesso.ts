@@ -44,4 +44,12 @@ export class controllerRecesso {
     }
     return response.status(300).json(result)
   }
+  async filtro_data(request: Request, response: Response) {
+    const { data_recesso } = request.params
+    const result = await service.filtro_data({ data_recesso })
+    if (result instanceof Error) {
+      return response.status(404).json(result.message)
+    }
+    return response.status(200).json(result)
+  }
 }

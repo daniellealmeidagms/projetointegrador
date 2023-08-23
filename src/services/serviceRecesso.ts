@@ -45,4 +45,11 @@ export class ServiceRecesso {
     await cursor.delete(recesso.id_recesso)
     return "Recesso excluído com sucesso"
   }
+  async filtro_data(data_recesso): Promise<Recesso | Error> {
+    const recesso = await cursor.findOne({ where: { data_recesso } })
+    if (!recesso) {
+      return new Error("Data não encontrado!")
+    }
+    return recesso
+  }
 }
