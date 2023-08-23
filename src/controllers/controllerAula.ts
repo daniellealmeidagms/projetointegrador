@@ -44,4 +44,33 @@ export class ControlerAula {
     }
     return response.status(300).json(result)
   }
+  async filter_data_aula(request: Request, response: Response) {
+    const { data_aula } = request.params
+    const result = await service.filter_data_aula({ data_aula })
+
+    if (result instanceof Error) {
+      return response.status(400).json(result)
+    }
+
+    return response.status(200).json(result)
+  }
+async filter_turma(request: Request, response: Response) {
+  const { fk_turma } = request.params;
+  const result = await service.filter_turma({ fk_turma })
+  
+  if (result instanceof Error) {
+    return response.status(400).json(result.message);
+  }
+  
+  return response.status(200).json(result);
 }
+async filter_status(request: Request, response: Response){
+  const {status_aula} = request.params
+  const result = await service.filter_status({ status_aula })
+  if(result instanceof Error){
+    return response.status(400).json(result.message)
+  }
+  return response.status(200).json(result)
+}
+}
+
