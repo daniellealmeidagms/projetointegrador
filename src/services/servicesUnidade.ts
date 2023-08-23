@@ -62,4 +62,17 @@ export class ServiceUnidades {
     await cursor.delete(unidade.id_unidade)
     return "Unidade excluida com sucesso"
   }
+
+  async filterTime(carga_horaria_unidade) {
+    const unidades = await cursor.find({ where: {carga_horaria_unidade} })
+    return unidades
+  }
+
+  async filterCurso(fk_curso) {
+    const curso = await cursor.findOne({ where: { fk_curso } })
+    if (!fk_curso) {
+      return new Error(" curso nao encontrado ")
+    }
+    return curso
+  }
 }
