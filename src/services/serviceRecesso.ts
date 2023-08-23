@@ -22,7 +22,8 @@ export class ServiceRecesso {
   }
 
   async readOne(id_recesso) {
-    const recesso = await cursor.findOne({ where: { id_recesso } })
+    console.log("ID no serviço:", id_recesso) // Adicione esta linha
+    const recesso = await cursor.findOne({ where: { id_recesso }})
     if (!recesso) {
       return new Error("Recesso não encontrado!")
     }
@@ -47,5 +48,13 @@ export class ServiceRecesso {
     }
     await cursor.delete(recesso.id_recesso)
     return "Recesso deletado com sucesso!"
+  }
+
+  async filterDate(data_recesso) {
+    const recesso = await cursor.find({ where: { data_recesso } })
+    if (recesso.length === 0) {
+      return new Error("Nenhum recesso encontrado!")
+    }
+    return recesso
   }
 }
