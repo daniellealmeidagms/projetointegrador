@@ -10,7 +10,7 @@ export class ServiceRecesso {
   }
 
   async readOne(id_recesso): Promise<Recesso | Error> {
-    const recesso = await cursor.findOne({ where: { id_recesso } })
+    const recesso = await cursor.findOne({where :id_recesso })
     if (!recesso) {
       return new Error("Recesso não encontrado")
     }
@@ -48,6 +48,14 @@ export class ServiceRecesso {
     recesso.descricao_recesso == descricao_recesso ? descricao_recesso : recesso.descricao_recesso
 
     await cursor.save(recesso)
+    return recesso
+  }
+
+  async filter_date(data_recesso): Promise<Recesso | Error> {
+    const recesso = await cursor.findOne({ where:  data_recesso  })
+    if (!recesso) {
+      return new Error("Data não encontrado")
+    }
     return recesso
   }
 }
