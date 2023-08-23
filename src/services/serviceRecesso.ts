@@ -26,8 +26,8 @@ export class ServiceRecesso {
   }
 
   async readOne(id_recesso) {
-    // SELECT * FROM recesso WHERE id_recesso = id_recesso
-    const recesso = await cursor.findOne({ where: { id_recesso } })
+    
+    const recesso = await cursor.findOne({ where:  id_recesso  })
     if (!recesso) {
       return new Error("Recesso não encontrado!")
     }
@@ -55,5 +55,14 @@ export class ServiceRecesso {
     // DELETE FROM recesso WHERE id_recesso = id_recesso
     await cursor.delete(recesso.id_recesso)
     return "Recesso excluído com sucesso!"
+  }
+
+  async filterData(data_recesso): Promise < Recesso | Error>{
+    const recesso = await  cursor.findOne({where :data_recesso})
+    if(!recesso){
+      return new Error("Data não encontrada!!!")
+    }
+    
+    return recesso
   }
 }

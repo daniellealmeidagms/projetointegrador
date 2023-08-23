@@ -1,19 +1,18 @@
-import { Router, response } from 'express';
-import { request } from 'http'
-import { ControllerRecesso } from '../controllers/controllersRecesso'
+import { Router, response } from "express"
+import { request } from "http"
+import { ControllerRecesso } from "../controllers/controllersRecesso"
 
 const ROTAS = Router()
 
-ROTAS.get("/", (request,response) => {
+ROTAS.get("/", (request, response) => {
   return response.json("home page")
 })
-
 
 ROTAS.get("/recessos", new ControllerRecesso().readAll)
 ROTAS.post("/recessos", new ControllerRecesso().create)
 ROTAS.get("/recessos/:id_recesso", new ControllerRecesso().readOne)
 ROTAS.put("/recessos/:id_recesso", new ControllerRecesso().update)
 ROTAS.delete("/recessos/:id_recesso", new ControllerRecesso().delete)
-
+ROTAS.get("/recessos/data/:data_recesso", new ControllerRecesso().filterData)
 
 export default ROTAS
