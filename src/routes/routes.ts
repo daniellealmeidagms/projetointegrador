@@ -29,5 +29,7 @@ rotas.post("/unidades", new ControllerUnidade().create)
 rotas.get("/unidades/:id_unidades", new ControllerUnidade().readOne)
 rotas.put("/unidades/:id_unidades", new ControllerUnidade().update)
 rotas.delete("/unidades/:id_unidades", new ControllerUnidade().delete)
+rotas.get("/unidades/horario/:carga_horaria_unidade", new ControllerUnidade().filterTime)
+rotas.get("/unidades/fk_curso",new ControllerUnidade().filterCurso)
 
 export default rotas
