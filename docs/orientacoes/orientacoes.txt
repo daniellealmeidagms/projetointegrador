@@ -37,7 +37,7 @@ npm install -D	  instala dependências/bibliotecas lado do servidor
 
 * Databases: Arquivos de conexão ao(s) banco(s) de dados
 - Connections: Conectores de SGBDs
-- Models: Mapeamento de Entidades
+- Models: Mapeamento de Tabelas
 
 * Services: Arquivos de consulta ao banco de dados (DQL)
 
@@ -46,7 +46,7 @@ npm install -D	  instala dependências/bibliotecas lado do servidor
 * Routes: Rotas de acesso aos recursos da aplicação
 
 DB -> DATABASES -> SERVICES -> CONTROLLERS -> ROUTES -> FRONTEND
-DB -> BACKEND 				                               -> FRONTEND
+DB ->                 BACKEND 			<3	               -> FRONTEND
 
 
 3º) Inicializar Servidor
