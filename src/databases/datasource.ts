@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm"
-import Recesso from '../models/recesso'
+import Recesso from "../models/recesso"
 
 export const AppDataSource = new DataSource({
   type: "postgres",

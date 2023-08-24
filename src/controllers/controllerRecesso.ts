@@ -5,8 +5,8 @@ const SERVICE = new ServiceRecesso()
 
 export class ControllerRecesso {
   async create(request: Request, response: Response) {
-    const { descricao_recesso, data_recesso } = request.body
-    const RESULT = await SERVICE.create(descricao_recesso, data_recesso)
+    const { data_recesso, descricao_recesso } = request.body
+    const RESULT = await SERVICE.create(data_recesso, descricao_recesso)
     if (RESULT instanceof Error) {
       return response.status(409).json(RESULT.message)
     }
@@ -18,11 +18,12 @@ export class ControllerRecesso {
     if (RESULT.length < 1) {
       return response.status(204).json("Nenhum Recesso cadastrado!")
     }
+    return response.status(200).json(RESULT)
   }
 
   async readOne(request: Request, response: Response) {
     const { id_recesso } = request.params
-    const RESULT = await SERVICE.readOne({ id_recesso })
+    const RESULT = await SERVICE.readOne(id_recesso)
     if (RESULT instanceof Error) {
       return response.status(404).json(RESULT.message)
     }
@@ -41,7 +42,16 @@ export class ControllerRecesso {
 
   async delete(request: Request, response: Response) {
     const { id_recesso } = request.params
-    const RESULT = await SERVICE.delete({ id_recesso })
+    const result = await SERVICE.delete(id_recesso)
+    if (result instanceof Error) {
+      return response.status(404).json(result.message)
+    }
+    return response.status(300).json(result)
+  }
+
+  async filterDate(request: Request, response: Response) {
+    const { data_recesso } = request.params
+    const RESULT = await SERVICE.filterDate(data_recesso)
     if (RESULT instanceof Error) {
       return response.status(404).json(RESULT.message)
     }
