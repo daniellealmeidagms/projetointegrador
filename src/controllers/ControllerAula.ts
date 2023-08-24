@@ -1,6 +1,5 @@
 import { Request, Response } from "express"
 import { ServiceAula } from "../services/serviceAula"
-import { stat } from 'fs/promises'
 
 const service = new ServiceAula()
 

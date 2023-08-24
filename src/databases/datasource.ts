@@ -1,4 +1,5 @@
 import { DataSource } from "typeorm"
+import Aula from '../models/aulas'
 import Curso from '../models/cursos'
 import Unidade from '../models/unidade'
 import Recesso from '../models/recesso'
@@ -13,5 +14,5 @@ export const AppDataSource = new DataSource({
   database: "cronogramas",
   synchronize: true,
   logging: true,
-  entities: [Curso, Recesso, Turma, Unidade]
+  entities: [Aula, Curso, Recesso, Turma, Unidade]
 })
