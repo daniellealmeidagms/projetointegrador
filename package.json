@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "author": "",
   "license": "MIT",
@@ -19,6 +20,7 @@
     "eslint-plugin-n": "^16.0.1",
     "eslint-plugin-promise": "^6.1.1",
     "nodemon": "^3.0.1",
+    "prettier": "^3.0.2",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   },
@@ -26,9 +28,7 @@
     "express": "^4.18.2",
     "pg": "^8.11.2",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.3.17"
-  },
-  "directories": {
-    "doc": "docs"
+    "typeorm": "^0.3.17",
+    "uuid": "^9.0.0"
   }
 }
