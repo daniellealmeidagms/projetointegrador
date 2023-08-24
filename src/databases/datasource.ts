@@ -1,4 +1,5 @@
 import { DataSource } from 'typeorm';
+import Turma from '../models/turma'
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -8,5 +9,6 @@ export const AppDataSource = new DataSource({
   password: 'postgres',
   database: 'cronogramas',
   synchronize: true,
-  logging: true
+  logging: true,
+  entities: [Turma]
 })

@@ -14,8 +14,10 @@ export default class Turma {
   horas_aula_dia: Number
   @Column()
   fk_curso: string
+  @Column()
+  turno: string
   constructor() {
-    this.id_turma = uuid()
+    this.id_turma = uuid() 
   }
 }
 /*
