@@ -13,7 +13,7 @@ rotas.post("/recessos", new ControllerRecesso().create)
 rotas.get("/recessos/:id_recesso", new ControllerRecesso().readOne)
 rotas.put("/recessos/:id_recesso", new ControllerRecesso().update)
 rotas.delete("/recessos/:id_recesso", new ControllerRecesso().delete)
-rotas.get("/recessos/data/:data_recesso"), new ControllerRecesso().filter_date
+rotas.get("/recessos/data/:data_recesso", new ControllerRecesso().filter_date)
 
 export default rotas
 
