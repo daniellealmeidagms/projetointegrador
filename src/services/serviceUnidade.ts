@@ -1,5 +1,5 @@
 import { AppDataSource } from "../databases/datasource"
-import Unidade from "../models/unidade"
+import Unidade from "../models/modelUnidade"
 
 const cursor = AppDataSource.getRepository(Unidade)
 
@@ -44,12 +44,14 @@ export class ServiceUnidade {
     if (!unidade) {
       return new Error("Unidade nao encontrada!")
     }
-    unidade.descricao_unidade = descricao_unidade ? descricao_unidade : unidade.descricao_unidade
+    unidade.descricao_unidade = descricao_unidade
+      ? descricao_unidade
+      : unidade.descricao_unidade
     unidade.carga_horaria_unidade = carga_horaria_unidade
       ? carga_horaria_unidade
       : unidade.carga_horaria_unidade
-    unidade.ordem = ordem ? ordem : unidade.ordem
     unidade.fk_curso = fk_curso ? fk_curso : unidade.fk_curso
+    unidade.ordem = ordem ? ordem : unidade.ordem
     await cursor.save(unidade)
     return unidade
   }
