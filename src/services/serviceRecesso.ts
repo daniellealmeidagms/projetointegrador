@@ -44,7 +44,6 @@ export class ServiceRecesso {
   }
 
   async delete(id_recesso) {
-    // SELECT * FROM recesso WHERE id_recesso = id_recesso
     const recesso = await cursor.findOne({ where: { id_recesso } })
     if (!recesso) {
       return new Error("Recesso não encontrado!")

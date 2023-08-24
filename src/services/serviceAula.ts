@@ -55,6 +55,7 @@ export class ServiceAula {
     await cursor.delete(aula.id_aula)
     return "Aula exculída com sucesso!"
   }
+
   async filter_data_aula(data_aula) {
     const aula = await cursor.find({ where: { data_aula } })
     if (!aula) {
@@ -79,4 +80,3 @@ export class ServiceAula {
     return aula
   }
 }
-
