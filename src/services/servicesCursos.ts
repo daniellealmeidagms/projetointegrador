@@ -54,4 +54,18 @@ export class ServicesCursos {
     await cursor.delete(curso.id_curso)
     return "Curso excluido com sucesse!"
   }
+  async filterEixo(eixo) {
+    const curso = await cursor.findOne({ where: { eixo } })
+    if (!eixo) {
+      return new Error("Eixo não existente!")
+    }
+    return curso
+  }
+  async filterModalidade(modalidade) {
+    const curso = await cursor.findOne({ where: { modalidade } })
+    if (!modalidade) {
+      return new Error("Modalidade não existente!")
+    }
+    return curso
+  }
 }
