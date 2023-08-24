@@ -9,8 +9,10 @@ export default class Turma {
   data_inicio: Date
   @Column()
   data_fim: Date
-  @Column({ nullable: false })
+    @Column( {nullable: false })
   horas_aula_dia: Number
+  @Column()
+  turno: string
   @Column()
   fk_curso: string
   constructor() {

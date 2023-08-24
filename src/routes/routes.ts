@@ -35,6 +35,7 @@ rotas.post("/turmas", new ControllerTurma().create)
 rotas.get("/turmas/:id_turma", new ControllerTurma().readOne)
 rotas.put("/turmas/:id_turma", new ControllerTurma().update)
 rotas.delete("/turmas/:id_turma", new ControllerTurma().delete)
+rotas.get("/turmas/turnos/:turno", new ControllerTurma().filterTurno)
 
 // Recesso
 rotas.get("/recessos", new ControllerRecesso().readAll)
