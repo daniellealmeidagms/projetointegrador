@@ -25,6 +25,7 @@ CREATE TABLE "turma" (
   "data_inicio" date NOT NULL,
   "data_fim" date,
   "horas_aula_dia" integer NOT NULL DEFAULT 10,
+  "turno" varchar
   "fk_curso" varchar
 );
 
