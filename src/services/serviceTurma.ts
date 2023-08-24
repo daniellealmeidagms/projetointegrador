@@ -8,7 +8,6 @@ export class ServiceTurma {
     if (await cursor.findOne({ where: { turno, fk_curso } })) {
       return new Error("Turma já cadastrada!")
     }
-
     // INSERT INTO turma VALUES(data_turma, descricao_turma)
     const turma = cursor.create({
       data_inicio,
@@ -21,7 +20,6 @@ export class ServiceTurma {
     await cursor.save(turma)
     return turma
   }
-
   async readAll() {
     // find :SELECT * FROM turma
     const turmas = await cursor.find()

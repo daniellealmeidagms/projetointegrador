@@ -21,9 +21,9 @@ export class ControllerTurma {
   }
   async readOne(request: Request, response: Response) {
     const { id_turma } = request.params
-    const result = await service.readOne({ id_turma })
+    const result = await service.readOne( id_turma )
     if (result instanceof Error) {
-      return response.status(404).json(result.message)
+      return response.status(409).json(result.message)
     }
     return response.status(200).json(result)
   }
@@ -45,7 +45,7 @@ export class ControllerTurma {
   }
   async delete(request: Request, response: Response) {
     const { id_turma } = request.params
-    const result = await service.delete({ id_turma })
+    const result = await service.delete( id_turma )
     if (result instanceof Error) {
       return response.status(400).json(result.message)
     }
@@ -53,7 +53,7 @@ export class ControllerTurma {
   }
   async filterTurno(request: Request, response: Response) {
     const { turno } = request.params
-    const result = await service.filterTurno({ turno })
+    const result = await service.filterTurno( turno )
     if ( result.length < 1 ) {
       return response.status(204).json("Nenhuma turma com esse turno cadastrada!")
     }
