@@ -1,64 +1,60 @@
 import { AppDataSource } from "../databases/datasource"
-import Recesso from "../models/recesso"
+import Recesso from "../models/modelRecesso"
 
-const CURSOR = AppDataSource.getRepository(Recesso)
+const cursor = AppDataSource.getRepository(Recesso)
 
 export class ServiceRecesso {
   async create(data_recesso, descricao_recesso): Promise<Recesso | Error> {
-    if (await CURSOR.findOne({ where: { data_recesso } })) {
+    if (await cursor.findOne({ where: { data_recesso } })) {
       return new Error("Recesso já cadastrado!")
     }
-
-    const RECESSO = CURSOR.create({
+    const recesso = cursor.create({
       data_recesso,
       descricao_recesso,
     })
-
-    await CURSOR.save(RECESSO)
-    return RECESSO
+    await cursor.save(recesso)
+    return recesso
   }
 
   async readAll() {
-    const TODOS_RECESSOS = await CURSOR.find()
-    return TODOS_RECESSOS
+    const recessos = await cursor.find()
+    return recessos
   }
 
   async readOne(id_recesso): Promise<Recesso | Error> {
-    const RECESSO = await CURSOR.findOne({ where: { id_recesso } })
-
-    if (!RECESSO) {
-      return new Error("Recesso não encontrado!")
-    }
-    return RECESSO
-  }
-
-  async update(id_recesso, descricao_recesso, data_recesso): Promise<Recesso | Error> {
-    const RECESSO = await CURSOR.findOne({ where: { id_recesso } })
-    if (!RECESSO) {
-      return new Error("Recesso não encontrado!")
-    }
-    RECESSO.descricao_recesso = descricao_recesso ? descricao_recesso : RECESSO.descricao_recesso
-    RECESSO.data_recesso = data_recesso ? data_recesso : RECESSO.data_recesso
-
-    await CURSOR.save(RECESSO)
-    return RECESSO
-  }
-
-  async delete(id_recesso) {
-    const recesso = await CURSOR.findOne({ where: { id_recesso } })
+    // SELECT * FROM recesso WHERE id_recesso = 5338
+    const recesso = await cursor.findOne({ where: { id_recesso } })
     if (!recesso) {
       return new Error("Recesso não encontrado!")
     }
-    await CURSOR.delete(recesso.id_recesso)
-    return "Recesso excluído com sucesso!"
+    return recesso
   }
 
-  async filterDate(data_recesso): Promise<Recesso | Error> {
-    console.log(data_recesso)
-    const RECESSO = await CURSOR.findOne({ where: { data_recesso } })
-    if (!RECESSO) {
-      return new Error("Data não encontrada!")
+  async update(
+    id_recesso,
+    descricao_recesso,
+    data_recesso
+  ): Promise<Recesso | Error> {
+    const recesso = await cursor.findOne({ where: { id_recesso } })
+    if (!recesso) {
+      return new Error("Recesso não encontrado!")
     }
-    return RECESSO
+    // O objeto receberá o valor definido pelo usuário, se houver; do contrário, manterá o que já havia.
+    recesso.descricao_recesso = descricao_recesso
+      ? descricao_recesso
+      : recesso.descricao_recesso
+    recesso.data_recesso = data_recesso ? data_recesso : recesso.data_recesso
+    await cursor.save(recesso)
+    return recesso
+  }
+
+  async delete(id_recesso) {
+    const recesso = await cursor.findOne({ where: { id_recesso } })
+    if (!recesso) {
+      return new Error("Recesso não encontrado!")
+    }
+    // DELETE FROM recesso WHERE id_recesso = id_recesso
+    await cursor.delete(recesso.id_recesso)
+    return "Recesso excluído com sucesso!"
   }
 }
