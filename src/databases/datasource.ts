@@ -4,6 +4,7 @@ import Curso from '../models/cursos'
 import Unidade from '../models/unidade'
 import Recesso from '../models/recesso'
 import Turma from '../models/turma'
+import curso from '../models/cursos'
 
 export const AppDataSource = new DataSource({
   type: "postgres",
