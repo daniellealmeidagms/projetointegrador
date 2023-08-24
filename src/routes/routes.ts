@@ -10,7 +10,7 @@ rotas.get("/aula/:id_aula", new ControlerAula().readOne)
 rotas.put("/aula/:id_aula", new ControlerAula().update)
 rotas.delete("/aula/:id_aula", new ControlerAula().delete)
 rotas.get("/aula/data/:data_aula", new ControlerAula().filter_data_aula)
-rotas.get("/aula/:fk_turma", new ControlerAula().filter_turma)
-rotas.get("/aula/:status_aula", new ControlerAula().filter_status)
+rotas.get("/aula/fkturma/:fk_turma", new ControlerAula().filter_turma)
+rotas.get("/aula/status/:status_aula", new ControlerAula().filter_status)
 
 export default rotas

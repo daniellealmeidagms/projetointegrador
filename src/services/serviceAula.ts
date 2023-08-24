@@ -49,21 +49,21 @@ export class Serviceaula {
     return "aula excuída com sucesso!"
   }
   async filter_data_aula(data_aula) {
-    const aula = await cursor.find({ where: { data_aula } })
+    const aula = await cursor.findOne({ where:data_aula})
     if (!aula) {
       return new Error("Data nao encontrada")
     }
     return aula
   }
   async filter_turma(fk_turma) {
-    const aula = await cursor.find({ where:  {fk_turma } })
+    const aula = await cursor.findOne({ where:fk_turma })
     if (!aula) {
       return new Error("Turma não encontrada")
     }
     return aula
   }
   async filter_status(status_aula) {
-    const aula = await cursor.findOne({ where:  {status_aula}  })
+    const aula = await cursor.findOne({ where:status_aula})
     if (!aula) {
       return new Error("Status não encontrado")
     }
