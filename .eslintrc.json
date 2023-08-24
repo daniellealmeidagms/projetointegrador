@@ -6,8 +6,8 @@
     },
     "extends": [
         "standard-with-typescript",
-    "prettier"
-],
+        "prettier"
+    ],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
