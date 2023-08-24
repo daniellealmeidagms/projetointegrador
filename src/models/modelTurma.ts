@@ -1,15 +1,15 @@
 import { Entity, PrimaryColumn, Column } from "typeorm"
 import { v4 as uuid } from "uuid"
 
-@Entity("Turma")
+@Entity("turma")
 export default class Turma {
   @PrimaryColumn()
   id_turma: string
   @Column()
   data_inicio: Date
-  @Column()
+  @Column({ nullable: true })
   data_fim: Date
-    @Column( {nullable: false })
+  @Column({ nullable: false })
   horas_aula_dia: Number
   @Column()
   turno: string

@@ -24,7 +24,7 @@ export class ControllerTurma {
 
   async readOne(request: Request, response: Response) {
     const { id_turma } = request.params
-    const result = await service.readOne({ id_turma })
+    const result = await service.readOne(id_turma)
     if (result instanceof Error) {
       return response.status(404).json(result.message)
     }

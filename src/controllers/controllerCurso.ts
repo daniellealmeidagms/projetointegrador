@@ -1,11 +1,9 @@
-import { Request, Response } from 'express'
-import { servicesCursos } from '../models/servicesCursos'
-import curso from '../models/cursos'
-import { servicesCursos } from '../services/servicesCursos'
+import { Request, Response } from "express"
+import { ServiceCurso } from "../services/serviceCurso"
 
-const service = new servicesCursos()
+const service = new ServiceCurso()
 
-export class controllerCurso {
+export class ControllerCurso {
   async create(request: Request, response: Response) {
     const { descricao_curso, carga_horaria_curso, modalidade, eixo } =
       request.body
@@ -21,17 +19,17 @@ export class controllerCurso {
     return response.status(200).json(result)
   }
 
-  async readAll(request: Request, response: Response){
-    const result = await service.ReadAll()
+  async readAll(request: Request, response: Response) {
+    const result = await service.readAll()
     if (result.length < 1) {
       return response.status(204).json("Nenhum curso cadastrado!")
     }
     return response.status(200).json(result)
   }
 
-  async readOne(request: Request, response: Response){
+  async readOne(request: Request, response: Response) {
     const { id_curso } = request.params
-    const result = await service.readOne({ id_curso })
+    const result = await service.readOne(id_curso)
     if (result instanceof Error) {
       return response.status(404).json(result.message)
     }
@@ -80,5 +78,4 @@ export class controllerCurso {
     }
     return response.status(200).json(result)
   }
-
 }

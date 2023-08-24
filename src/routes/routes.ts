@@ -1,6 +1,6 @@
 import { Router } from "express"
-import { controllerCurso } from "../controllers/controllersCurso"
-import { ControlerAula } from "../controllers/ControllerAula"
+import { ControllerCurso } from "../controllers/controllerCurso"
+import { ControllerAula } from "../controllers/controllerAula"
 import { ControllerTurma } from "../controllers/controllerTurma"
 import { ControllerRecesso } from "../controllers/controllerRecesso"
 import { ControllerUnidade } from "../controllers/controllersUnidade"
@@ -12,22 +12,22 @@ rotas.get("/", (request, response) => {
 })
 
 // Aula
-rotas.get("/aula", new ControlerAula().readAll)
-rotas.post("/aula", new ControlerAula().create)
-rotas.get("/aula/:id_aula", new ControlerAula().readOne)
-rotas.put("/aula/:id_aula", new ControlerAula().update)
-rotas.delete("/aula/:id_aula", new ControlerAula().delete)
-rotas.get("/aula/:data_aula", new ControlerAula().filter_data_aula)
-rotas.get("/aula/:fk_turma", new ControlerAula().filter_turma)
+rotas.get("/aulas", new ControllerAula().readAll)
+rotas.post("/aulas", new ControllerAula().create)
+rotas.get("/aulas/:id_aula", new ControllerAula().readOne)
+rotas.put("/aulas/:id_aula", new ControllerAula().update)
+rotas.delete("/aulas/:id_aula", new ControllerAula().delete)
+rotas.get("/aulas/:data_aula", new ControllerAula().filter_data_aula)
+rotas.get("/aulas/:fk_turma", new ControllerAula().filter_turma)
 
 // Curso
-rotas.get("/curso", new controllerCurso().readAll)
-rotas.post("/curso", new controllerCurso().create)
-rotas.get("/curso/:id_curso", new controllerCurso().readOne)
-rotas.put("/curso/:id_curso", new controllerCurso().update)
-rotas.delete("/curso/:id_curso", new controllerCurso().delete)
-rotas.get("/curso/:eixo", new controllerCurso().filterEixo)
-rotas.get("/curso/:modalidade", new controllerCurso().filterModalidade)
+rotas.get("/cursos", new ControllerCurso().readAll)
+rotas.post("/cursos", new ControllerCurso().create)
+rotas.get("/cursos/:id_curso", new ControllerCurso().readOne)
+rotas.put("/cursos/:id_curso", new ControllerCurso().update)
+rotas.delete("/cursos/:id_curso", new ControllerCurso().delete)
+rotas.get("/cursos/:eixo", new ControllerCurso().filterEixo)
+rotas.get("/cursos/:modalidade", new ControllerCurso().filterModalidade)
 
 // Turma
 rotas.get("/turmas", new ControllerTurma().readAll)
@@ -50,7 +50,10 @@ rotas.post("/unidades", new ControllerUnidade().create)
 rotas.get("/unidades/:id_unidades", new ControllerUnidade().readOne)
 rotas.put("/unidades/:id_unidades", new ControllerUnidade().update)
 rotas.delete("/unidades/:id_unidades", new ControllerUnidade().delete)
-rotas.get("/unidades/horario/:carga_horaria_unidade", new ControllerUnidade().filterTime)
-rotas.get("/unidades/cursos/:fk_curso",new ControllerUnidade().filterCurso)
+rotas.get(
+  "/unidades/horario/:carga_horaria_unidade",
+  new ControllerUnidade().filterTime
+)
+rotas.get("/unidades/cursos/:fk_curso", new ControllerUnidade().filterCurso)
 
 export default rotas

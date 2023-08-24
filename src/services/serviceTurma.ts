@@ -1,12 +1,20 @@
 import { AppDataSource } from "../databases/datasource"
-import Turma from "../models/turma"
+import Turma from "../models/modelTurma"
 
 const cursor = AppDataSource.getRepository(Turma)
 
 export class ServiceTurma {
-  async create(data_inicio, data_fim, horas_aula_dia, turno, fk_curso): Promise<Turma | Error> {
+  async create(
+    data_inicio,
+    data_fim,
+    horas_aula_dia,
+    turno,
+    fk_curso
+  ): Promise<Turma | Error> {
     if (
-      await cursor.findOne({ where: { data_inicio, data_fim, horas_aula_dia, turno, fk_curso } })
+      await cursor.findOne({
+        where: { data_inicio, data_fim, horas_aula_dia, turno, fk_curso },
+      })
     ) {
       return new Error("Turma já cadastrada!")
     }
@@ -48,7 +56,9 @@ export class ServiceTurma {
     }
     turma.data_inicio = data_inicio ? data_inicio : turma.data_inicio
     turma.data_fim = data_fim ? data_fim : turma.data_fim
-    turma.horas_aula_dia = horas_aula_dia ? horas_aula_dia : turma.horas_aula_dia
+    turma.horas_aula_dia = horas_aula_dia
+      ? horas_aula_dia
+      : turma.horas_aula_dia
     turma.turno = turno ? turno : turma.turno
     turma.fk_curso = fk_curso ? fk_curso : turma.fk_curso
     await cursor.save(turma)

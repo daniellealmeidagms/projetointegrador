@@ -1,7 +1,9 @@
 import { AppDataSource } from "../databases/datasource"
-import Curso from "../models/cursos"
+import Curso from "../models/modelCurso"
+
 const cursor = AppDataSource.getRepository(Curso)
-export class servicesCursos {
+
+export class ServiceCurso {
   async create(
     descricao_curso,
     carga_horaria_curso,
@@ -20,7 +22,7 @@ export class servicesCursos {
     await cursor.save(curso)
     return curso
   }
-  async ReadAll() {
+  async readAll() {
     const cursos = await cursor.find()
     return cursos
   }
@@ -38,6 +40,8 @@ export class servicesCursos {
     modalidade,
     eixo
   ): Promise<Curso | Error> {
+    console.log("passei aqui")
+    console.log(descricao_curso)
     const curso = await cursor.findOne({ where: { id_curso } })
     if (!curso) {
       return new Error("Curso não existente!")
