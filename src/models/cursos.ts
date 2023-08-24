@@ -14,5 +14,5 @@ export default class curso {
   eixo: string
   constructor(){
     this.id_curso = uuid()
-}
   }
+}

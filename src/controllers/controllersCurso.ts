@@ -1,6 +1,7 @@
-import { Request, Response, response } from 'express'
+import { Request, Response } from 'express'
 import { servicesCursos } from '../models/servicesCursos'
 import curso from '../models/cursos'
+import { servicesCursos } from '../services/servicesCursos'
 
 const service = new servicesCursos()
 
@@ -20,16 +21,17 @@ export class controllerCurso {
     return response.status(200).json(result)
   }
 
-  async readAll(request: Request, response: Response) {
+  async readAll(request: Request, response: Response){
     const result = await service.ReadAll()
     if (result.length < 1) {
       return response.status(204).json("Nenhum curso cadastrado!")
     }
     return response.status(200).json(result)
   }
-  async readOne(request: Request, response: Response) {
+
+  async readOne(request: Request, response: Response){
     const { id_curso } = request.params
-    const result = await service.readOne(id_curso)
+    const result = await service.readOne({ id_curso })
     if (result instanceof Error) {
       return response.status(404).json(result.message)
     }
@@ -61,6 +63,7 @@ export class controllerCurso {
     }
     return response.status(300).json(result)
   }
+
   async filterEixo(request: Request, response: Response) {
     const { eixo } = request.body
     const result = await service.filterEixo(eixo)
@@ -77,4 +80,5 @@ export class controllerCurso {
     }
     return response.status(200).json(result)
   }
+
 }
