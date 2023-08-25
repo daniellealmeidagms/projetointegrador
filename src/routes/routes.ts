@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { ControllerCurso } from "../controllers/controllerCurso"
-import { ControllerAula } from "../controllers/controllerAula"
+import { ControllerAula } from "../controllers/ControllerAula"
 import { ControllerTurma } from "../controllers/controllerTurma"
 import { ControllerRecesso } from "../controllers/controllerRecesso"
 import { ControllerUnidade } from "../controllers/controllersUnidade"
@@ -15,10 +15,10 @@ rotas.get("/", (request, response) => {
 rotas.get("/aulas", new ControllerAula().readAll)
 rotas.post("/aulas", new ControllerAula().create)
 rotas.get("/aulas/:id_aula", new ControllerAula().readOne)
-rotas.put("/aulas/:id_aula", new ControllerAula().update)
+rotas.put("/aulas/:id_aula" , new ControllerAula().update)
 rotas.delete("/aulas/:id_aula", new ControllerAula().delete)
-rotas.get("/aulas/:data_aula", new ControllerAula().filter_data_aula)
-rotas.get("/aulas/:fk_turma", new ControllerAula().filter_turma)
+rotas.get("/aulas/data/:data_aula", new ControllerAula().filter_data_aula)
+rotas.get("/aulas/turma/:fk_turma", new ControllerAula().filter_turma)
 
 // Curso
 rotas.get("/cursos", new ControllerCurso().readAll)
@@ -26,8 +26,8 @@ rotas.post("/cursos", new ControllerCurso().create)
 rotas.get("/cursos/:id_curso", new ControllerCurso().readOne)
 rotas.put("/cursos/:id_curso", new ControllerCurso().update)
 rotas.delete("/cursos/:id_curso", new ControllerCurso().delete)
-rotas.get("/cursos/:eixo", new ControllerCurso().filterEixo)
-rotas.get("/cursos/:modalidade", new ControllerCurso().filterModalidade)
+rotas.get("/cursos/eixo/:eixo", new ControllerCurso().filterEixo)
+rotas.get("/cursos/modalidade/:modalidade", new ControllerCurso().filterModalidade)
 
 // Turma
 rotas.get("/turmas", new ControllerTurma().readAll)
@@ -50,10 +50,7 @@ rotas.post("/unidades", new ControllerUnidade().create)
 rotas.get("/unidades/:id_unidades", new ControllerUnidade().readOne)
 rotas.put("/unidades/:id_unidades", new ControllerUnidade().update)
 rotas.delete("/unidades/:id_unidades", new ControllerUnidade().delete)
-rotas.get(
-  "/unidades/horario/:carga_horaria_unidade",
-  new ControllerUnidade().filterTime
-)
+rotas.get("/unidades/horario/:carga_horaria_unidade", new ControllerUnidade().filterTime)
 rotas.get("/unidades/cursos/:fk_curso", new ControllerUnidade().filterCurso)
 
 export default rotas
