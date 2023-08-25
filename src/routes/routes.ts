@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { ControllerCurso } from "../controllers/controllerCurso"
-import { ControllerAula } from "../controllers/controllerAula"
+import { ControllerAula } from "../controllers/ControllerAula"
 import { ControllerTurma } from "../controllers/controllerTurma"
 import { ControllerRecesso } from "../controllers/controllerRecesso"
 import { ControllerUnidade } from "../controllers/controllersUnidade"
@@ -23,7 +23,7 @@ rotas.get("/aulas/:fk_turma", new ControllerAula().filter_turma)
 // Curso
 rotas.get("/cursos", new ControllerCurso().readAll)
 rotas.post("/cursos", new ControllerCurso().create)
-rotas.get("/cursos/:id_curso", new ControllerCurso().readOne)
+// rotas.get("/cursos/:id_curso", new ControllerCurso().readOne)
 rotas.put("/cursos/:id_curso", new ControllerCurso().update)
 rotas.delete("/cursos/:id_curso", new ControllerCurso().delete)
 rotas.get("/cursos/:eixo", new ControllerCurso().filterEixo)
