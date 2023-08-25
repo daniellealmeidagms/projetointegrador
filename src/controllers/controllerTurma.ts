@@ -1,6 +1,5 @@
 import { Request, Response } from "express"
 import { ServiceTurma } from "../services/serviceTurma"
-import { group } from "console"
 
 const service = new ServiceTurma()
 
