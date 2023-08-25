@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
+    
     "target": "ES2018",
     "lib": ["es5", "es6", "ES2018"],
     "module": "CommonJS",
+    "moduleResolution": "Node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "allowJs": true,
@@ -22,7 +24,10 @@
     //   //   "@services": ["services/*"]
     // }
   },
+  
+
   "compileOnSave": true,
   "include": ["./src/**/*.ts", "src/index.ts", "src/functions/funcaoperson.ts"],
   "exclude": ["node_modules"]
 }
+
