@@ -67,7 +67,7 @@ export class ServiceCurso {
     return "Curso excluido com sucesso!"
   }
   async filterEixo(eixo) {
-    const curso = await cursor.findOne({ where: { eixo } })
+    const curso = await cursor.findOne({ where:  {eixo } })
     if (!eixo) {
       return new Error("Eixo não existente!")
     }

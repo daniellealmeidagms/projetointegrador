@@ -53,12 +53,12 @@ export class ControllerRecesso {
     return response.status(300).json(result)
   }
 
-  async filter_date(request: Request, response: Response) {
-    const { data_recesso} = request.params
-    const result = await service.filter_date({ data_recesso })
-    if (result instanceof Error) {
-      return response.status(404).json(result.message)
-    }
-    return response.status(200).json(result)
-  }
+  // async filter_date(request: Request, response: Response) {
+  //   const { data_recesso} = request.params
+  //   const result = await service.filter_date({ data_recesso })
+  //   if (result instanceof Error) {
+  //     return response.status(404).json(result.message)
+  //   }
+  //   return response.status(200).json(result)
+  // }
 }
