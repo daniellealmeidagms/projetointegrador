@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { ControllerCurso } from "../controllers/controllerCurso"
-import { ControllerAula } from "../controllers/controllerAula"
+import { ControllerAula } from "../controllers/ControllerAula"
 import { ControllerTurma } from "../controllers/controllerTurma"
 import { ControllerRecesso } from "../controllers/controllerRecesso"
 import { ControllerUnidade } from "../controllers/controllersUnidade"
