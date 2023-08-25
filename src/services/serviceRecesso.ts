@@ -1,5 +1,5 @@
 import { AppDataSource } from "../databases/datasource"
-import Recesso from "../models/recesso"
+import Recesso from "../models/modelRecesso"
 
 const cursor = AppDataSource.getRepository(Recesso)
 
@@ -17,25 +17,32 @@ export class ServiceRecesso {
   }
 
   async readAll() {
-    const recesso = await cursor.find()
-    return recesso
+    const recessos = await cursor.find()
+    return recessos
   }
 
-  async readOne(id_recesso) {
-    console.log("ID no serviço:", id_recesso) // Adicione esta linha
-    const recesso = await cursor.findOne({ where: { id_recesso }})
-    if (!recesso) {
-      return new Error("Recesso não encontrado!")
-    }
-    return recesso
-  }
-
-  async update(id_recesso, descricao_recesso, data_recesso): Promise<Recesso | Error> {
+  async readOne(id_recesso): Promise<Recesso | Error> {
+    // SELECT * FROM recesso WHERE id_recesso = 5338
     const recesso = await cursor.findOne({ where: { id_recesso } })
     if (!recesso) {
       return new Error("Recesso não encontrado!")
     }
-    recesso.descricao_recesso = descricao_recesso ? descricao_recesso : recesso.descricao_recesso
+    return recesso
+  }
+
+  async update(
+    id_recesso,
+    descricao_recesso,
+    data_recesso
+  ): Promise<Recesso | Error> {
+    const recesso = await cursor.findOne({ where: { id_recesso } })
+    if (!recesso) {
+      return new Error("Recesso não encontrado!")
+    }
+    // O objeto receberá o valor definido pelo usuário, se houver; do contrário, manterá o que já havia.
+    recesso.descricao_recesso = descricao_recesso
+      ? descricao_recesso
+      : recesso.descricao_recesso
     recesso.data_recesso = data_recesso ? data_recesso : recesso.data_recesso
     await cursor.save(recesso)
     return recesso
@@ -46,15 +53,8 @@ export class ServiceRecesso {
     if (!recesso) {
       return new Error("Recesso não encontrado!")
     }
+    // DELETE FROM recesso WHERE id_recesso = id_recesso
     await cursor.delete(recesso.id_recesso)
-    return "Recesso deletado com sucesso!"
-  }
-
-  async filterDate(data_recesso) {
-    const recesso = await cursor.find({ where: { data_recesso } })
-    if (recesso.length === 0) {
-      return new Error("Nenhum recesso encontrado!")
-    }
-    return recesso
+    return "Recesso excluído com sucesso!"
   }
 }
