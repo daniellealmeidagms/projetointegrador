@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { ControllerCurso } from "../controllers/controllerCurso"
-import { ControllerAula } from "../controllers/controllerAula"
+import { ControllerAula } from "../controllers/ControllerAula"
 import { ControllerTurma } from "../controllers/controllerTurma"
 import { ControllerRecesso } from "../controllers/controllerRecesso"
 import { ControllerUnidade } from "../controllers/controllersUnidade"
@@ -17,8 +17,8 @@ rotas.post("/aulas", new ControllerAula().create)
 rotas.get("/aulas/:id_aula", new ControllerAula().readOne)
 rotas.put("/aulas/:id_aula", new ControllerAula().update)
 rotas.delete("/aulas/:id_aula", new ControllerAula().delete)
-rotas.get("/aulas/:data_aula", new ControllerAula().filter_data_aula)
-rotas.get("/aulas/:fk_turma", new ControllerAula().filter_turma)
+rotas.get("/aulas/data/:data_aula", new ControllerAula().filter_data_aula)
+rotas.get("/aulas/turma/:fk_turma", new ControllerAula().filter_turma)
 
 // Curso
 rotas.get("/cursos", new ControllerCurso().readAll)
@@ -26,7 +26,7 @@ rotas.post("/cursos", new ControllerCurso().create)
 rotas.get("/cursos/:id_curso", new ControllerCurso().readOne)
 rotas.put("/cursos/:id_curso", new ControllerCurso().update)
 rotas.delete("/cursos/:id_curso", new ControllerCurso().delete)
-rotas.get("/cursos/:eixo", new ControllerCurso().filterEixo)
+rotas.get("/cursos/eixo:eixo", new ControllerCurso().filterEixo)
 rotas.get("/cursos/:modalidade", new ControllerCurso().filterModalidade)
 
 // Turma
